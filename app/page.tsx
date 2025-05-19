@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import './globals.css';
+import Link from 'next/link';
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
@@ -15,6 +16,7 @@ export default function Page() {
     <div>
       <header>TODOLIFE!!!!</header>
       <p>coolest most awesome project EVER evan candra alice best team EVER let's go</p>
+      <Link href="/test">test link</Link>
       <p>List:</p>
       
       <ul>
