@@ -15,28 +15,33 @@ export default function Page() {
   };
 
   return (
-    <><div>
-      <header>TODOLIFE!!!!</header>
-      <p>coolest most awesome project EVER evan candra alice best team EVER let's go</p>
+    <div className="todo">
+      <header>TODOLIFE!!!! (best team best project)</header>
       <Link href="/test">test link</Link>
-      <p>List:</p>
 
-      <ul>
-        {list.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <p>TODO:</p>
+      <div className="list">
+      
+        <ul>
+          {list.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
 
-      <div>
+      <div className="add">
         <p>Add new item: </p>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)} />
+        <input 
+          type="text" 
+          value={input} 
+          onChange={(e) => setInput(e.target.value)} 
+        />
         <button type="button" onClick={handleSave}>Save</button>
       </div>
-   </div>
-   <img src={lilGuy.src} alt="Image"></img>
-   </>
+      <div className="guy">
+        <img src={lilGuy.src} alt="Image"></img>
+      </div>
+    </div>
   );
+
 }
