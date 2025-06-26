@@ -4,12 +4,15 @@ import './globals.css';
 import Link from 'next/link';
 import React from "react";
 import lilGuy from "../assets/lilguy.png";
+import lilGuySmile from "../assets/lilguysmile.png";
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
-
+  const [guy, setGuy] = useState(lilGuy.src);
   const handleSave = () => {
+    setGuy(lilGuySmile.src);
+    setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
     setInput("");
   };
@@ -39,7 +42,7 @@ export default function Page() {
         <button type="button" onClick={handleSave}>Save</button>
       </div>
       <div className="guy">
-        <img src={lilGuy.src} alt="Image"></img>
+        <img src={guy} alt="Image"></img>
       </div>
     </div>
   );
