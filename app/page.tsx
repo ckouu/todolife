@@ -13,7 +13,6 @@ export default function Page() {
   const handleSave = () => {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
-    const newEntry = input + 
     setList([...list, input]);
     setInput("");
   };
