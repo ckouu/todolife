@@ -16,6 +16,17 @@ export default function Page() {
     setList([...list, input]);
     setInput("");
   };
+  const handleComplete = (completedItem: string) => {
+    const newList: string[] = [];
+    for (const item of list) {
+      if (item !== completedItem) {
+        newList.push(item);
+      }
+    }
+    setGuy(lilGuySmile.src);
+    setTimeout(() => setGuy(lilGuy.src), 1000);
+    setList(newList);
+  };
 
   return (
     <div className="todo">
@@ -27,7 +38,7 @@ export default function Page() {
       
         <ul>
           {list.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>{item} <button onClick={() => handleComplete(item)}>Complete</button></li>
           ))}
         </ul>
       </div>
