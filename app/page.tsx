@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
@@ -13,8 +13,20 @@ export default function Page() {
   const handleSave = () => {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
+    const newEntry = input + 
     setList([...list, input]);
     setInput("");
+  };
+  const handleComplete = (completedItem: string) => {
+    const newList: string[] = [];
+    for (const item of list) {
+      if (item !== completedItem) {
+        newList.push(item);
+      }
+    }
+    setGuy(lilGuySmile.src);
+    setTimeout(() => setGuy(lilGuy.src), 1000);
+    setList(newList);
   };
 
   return (
@@ -27,7 +39,7 @@ export default function Page() {
       
         <ul>
           {list.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>{item} <button onClick={() => handleComplete(item)}>Complete</button></li>
           ))}
         </ul>
       </div>
