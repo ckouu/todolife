@@ -50,7 +50,7 @@ export default function Page() {
           value={input} 
           onChange={(e) => setInput(e.target.value)} 
         />
-        <button type="button" onClick={handleSave}>Save</button>
+        <button type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
         <img src={guy} alt="Image"></img>
