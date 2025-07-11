@@ -10,12 +10,14 @@ export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
+
   const handleSave = () => {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
     setInput("");
   };
+
   const handleComplete = (completedItem: string) => {
     const newList: string[] = [];
     for (const item of list) {
@@ -28,6 +30,15 @@ export default function Page() {
     setList(newList);
   };
 
+  const inputEl = document.querySelector("input") as HTMLInputElement | null;
+  const btnEl = document.querySelector("saveButton") as HTMLButtonElement | null;
+
+  inputEl?.addEventListener("keypress", (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      btnEl?.click();
+    }
+  });
+
   return (
     <div className="todo">
       <header>TODOLIFE!!!! (best team best project)</header>
@@ -38,19 +49,21 @@ export default function Page() {
       
         <ul>
           {list.map((item) => (
-            <li key={item}>{item} <button onClick={() => handleComplete(item)}>Complete</button></li>
+            <li key={item}>
+              <button className="check" onClick={() => handleComplete(item)}></button> {item} 
+            </li>
           ))}
         </ul>
       </div>
 
       <div className="add">
-        <p>Add new item: </p>
         <input 
           type="text" 
           value={input} 
-          onChange={(e) => setInput(e.target.value)} 
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add your todo list item here!" 
         />
-        <button type="button" onClick={handleSave} disabled={input === ""}>Save</button>
+        <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
         <img src={guy} alt="Image"></img>
