@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
@@ -10,6 +10,17 @@ export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
+
+  useEffect(() => {
+    const inputEl = document.querySelector("input") as HTMLInputElement | null;
+    const btnEl = document.querySelector("#saveButton") as HTMLButtonElement | null;
+
+    inputEl?.addEventListener("keypress", (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        btnEl?.click();
+      }
+    });
+  })
 
   const handleSave = () => {
     setGuy(lilGuySmile.src);
@@ -29,15 +40,6 @@ export default function Page() {
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
   };
-
-  const inputEl = document.querySelector("input") as HTMLInputElement | null;
-  const btnEl = document.querySelector("saveButton") as HTMLButtonElement | null;
-
-  inputEl?.addEventListener("keypress", (e: KeyboardEvent) => {
-    if (e.key === "Enter") {
-      btnEl?.click();
-    }
-  });
 
   return (
     <div className="todo">
