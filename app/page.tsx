@@ -11,17 +11,6 @@ export default function Page() {
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
 
-  useEffect(() => {
-    const inputEl = document.querySelector("input") as HTMLInputElement | null;
-    const btnEl = document.querySelector("#saveButton") as HTMLButtonElement | null;
-
-    inputEl?.addEventListener("keypress", (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        btnEl?.click();
-      }
-    });
-  })
-
   const handleSave = () => {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
@@ -63,6 +52,7 @@ export default function Page() {
           type="text" 
           value={input} 
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter" && input != "") handleSave(); }}
           placeholder="Add your todo list item here!" 
         />
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
