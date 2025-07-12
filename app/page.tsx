@@ -3,15 +3,18 @@ import { useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
-import lilGuy from "../assets/lilguy.png";
-import lilGuySmile from "../assets/lilguysmile.png";
+import lilGuy from "../assets/guy.png";
+import lilGuyHappyKeyframe from "../assets/guy_happy_keyframe1.png";
+import lilGuySmile from "../assets/guy_happy.png";
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
   const handleSave = () => {
-    setGuy(lilGuySmile.src);
+    setGuy(lilGuyHappyKeyframe.src);
+    setTimeout(() => setGuy(lilGuySmile.src), 1000);
+    setTimeout(() => setGuy(lilGuyHappyKeyframe.src), 1000);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
     setInput("");
@@ -23,7 +26,9 @@ export default function Page() {
         newList.push(item);
       }
     }
-    setGuy(lilGuySmile.src);
+    setGuy(lilGuyHappyKeyframe.src);
+    setTimeout(() => setGuy(lilGuySmile.src), 1000)    
+    setTimeout(() => setGuy(lilGuyHappyKeyframe.src), 1000);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
   };
@@ -53,7 +58,7 @@ export default function Page() {
         <button type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
-        <img src={guy} alt="Image"></img>
+        <img src={guy} width={400} height={400} alt="Image"></img>
       </div>
     </div>
   );
