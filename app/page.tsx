@@ -13,9 +13,7 @@ export default function Page() {
   const [guy, setGuy] = useState(lilGuy.src);
 
   const handleSave = () => {
-    setGuy(lilGuyHappyKeyframe.src);
-    setTimeout(() => setGuy(lilGuySmile.src), 1000);
-    setTimeout(() => setGuy(lilGuyHappyKeyframe.src), 1000);
+    setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
     setInput("");
@@ -28,9 +26,7 @@ export default function Page() {
         newList.push(item);
       }
     }
-    setGuy(lilGuyHappyKeyframe.src);
-    setTimeout(() => setGuy(lilGuySmile.src), 1000)    
-    setTimeout(() => setGuy(lilGuyHappyKeyframe.src), 1000);
+    setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
   };
