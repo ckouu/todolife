@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
@@ -11,6 +11,7 @@ export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
+
   const handleSave = () => {
     setGuy(lilGuyHappyKeyframe.src);
     setTimeout(() => setGuy(lilGuySmile.src), 1000);
@@ -19,6 +20,7 @@ export default function Page() {
     setList([...list, input]);
     setInput("");
   };
+
   const handleComplete = (completedItem: string) => {
     const newList: string[] = [];
     for (const item of list) {
@@ -43,19 +45,22 @@ export default function Page() {
       
         <ul>
           {list.map((item) => (
-            <li key={item}>{item} <button onClick={() => handleComplete(item)}>Complete</button></li>
+            <li key={item}>
+              <button className="check" onClick={() => handleComplete(item)}></button> {item} 
+            </li>
           ))}
         </ul>
       </div>
 
       <div className="add">
-        <p>Add new item: </p>
         <input 
           type="text" 
           value={input} 
-          onChange={(e) => setInput(e.target.value)} 
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter" && input != "") handleSave(); }}
+          placeholder="Add your todo list item here!" 
         />
-        <button type="button" onClick={handleSave} disabled={input === ""}>Save</button>
+        <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
         <img src={guy} width={400} height={400} alt="Image"></img>
