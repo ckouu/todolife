@@ -1,5 +1,14 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
-  return NextResponse.json({message: "PLEASE WORK"});
+let list: string[] = []
+
+export async function GET(req: NextRequest) {
+  return NextResponse.json({ message: "PLEASE WORK", list: list });
+}
+
+export async function POST(req: NextRequest) {
+  const data = await req.json();
+  let newString: string = data.test;
+  list.push(newString);
+  return NextResponse.json({ message: 'SUCCESS', list: list });
 }

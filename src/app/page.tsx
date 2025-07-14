@@ -15,13 +15,15 @@ async function getTest() {
   console.log(data);
 }
 
-// async function postTest() {
-//   const response = await fetch("/api/test", {
-//     cache: "no-cache",
-//   })
-//   const data = await response.json();
-//   console.log(data);
-// }
+async function postTest() {
+  const res = await fetch('/api/test', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ test: 'one entry' }),
+  });
+  const data = await res.json();
+  console.log(data);
+}
 
 export default function Page() {
   
@@ -78,7 +80,7 @@ export default function Page() {
         <img src={guy} width={400} height={400} alt="Image"></img>
       </div>
       <button id="testGet" type="button" onClick={getTest}>test API get</button>
-      {/* <button id="testPost" type="button" onClick={postTest}>test API post</button> */}
+      <button id="testPost" type="button" onClick={postTest}>test API post</button>
     </div>
   );
 
