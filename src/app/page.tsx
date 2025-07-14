@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
-import lilGuy from "../assets/guy.png";
-import lilGuyHappyKeyframe from "../assets/guy_happy_keyframe1.png";
-import lilGuySmile from "../assets/guy_happy.png";
+import lilGuy from "../../public/guy.png";
+import lilGuyHappyKeyframe from "../../public/guy_happy_keyframe1.png";
+import lilGuySmile from "../../public/guy_happy.png";
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
@@ -34,7 +34,6 @@ export default function Page() {
   return (
     <div className="todo">
       <header>TODOLIFE!!!! (best team best project)</header>
-      <Link href="/test">test link</Link>
 
       <p>TODO:</p>
       <div className="list">
