@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import './globals.css';
 import Link from 'next/link';
 import React from "react";
-import lilGuy from "../assets/lilguy.png";
-import lilGuySmile from "../assets/lilguysmile.png";
+import lilGuy from "../../public/guy.png";
+import lilGuyHappyKeyframe from "../../public/guy_happy_keyframe1.png";
+import lilGuySmile from "../../public/guy_happy.png";
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
@@ -33,7 +34,6 @@ export default function Page() {
   return (
     <div className="todo">
       <header>TODOLIFE!!!! (best team best project)</header>
-      <Link href="/test">test link</Link>
 
       <p>TODO:</p>
       <div className="list">
@@ -58,7 +58,7 @@ export default function Page() {
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
-        <img src={guy} alt="Image"></img>
+        <img src={guy} width={400} height={400} alt="Image"></img>
       </div>
     </div>
   );
