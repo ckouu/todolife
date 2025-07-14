@@ -7,12 +7,29 @@ import lilGuy from "../../public/guy.png";
 import lilGuyHappyKeyframe from "../../public/guy_happy_keyframe1.png";
 import lilGuySmile from "../../public/guy_happy.png";
 
+async function getTest() {
+  const response = await fetch("/api/test", {
+    cache: "no-cache",
+  })
+  const data = await response.json();
+  console.log(data);
+}
+
+// async function postTest() {
+//   const response = await fetch("/api/test", {
+//     cache: "no-cache",
+//   })
+//   const data = await response.json();
+//   console.log(data);
+// }
+
 export default function Page() {
+  
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [guy, setGuy] = useState(lilGuy.src);
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
@@ -60,6 +77,8 @@ export default function Page() {
       <div className="guy">
         <img src={guy} width={400} height={400} alt="Image"></img>
       </div>
+      <button id="testGet" type="button" onClick={getTest}>test API get</button>
+      {/* <button id="testPost" type="button" onClick={postTest}>test API post</button> */}
     </div>
   );
 
