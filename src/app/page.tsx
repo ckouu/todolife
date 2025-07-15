@@ -38,13 +38,9 @@ export default function Page() {
     setInput("");
   };
 
-  const handleComplete = (completedItem: string) => {
-    const newList: string[] = [];
-    for (const item of list) {
-      if (item !== completedItem) {
-        newList.push(item);
-      }
-    }
+  const handleComplete = (index: number) => {
+    const newList = [...list];  
+    newList.splice(index, 1);
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
@@ -52,15 +48,15 @@ export default function Page() {
 
   return (
     <div className="todo">
-      <header>TODOLIFE!!!! (best team best project)</header>
+      <header>TODOLIFE!!!! (best team best project!!!)</header>
 
       <p>TODO:</p>
       <div className="list">
       
         <ul>
-          {list.map((item) => (
-            <li key={item}>
-              <button className="check" onClick={() => handleComplete(item)}></button> {item} 
+          {list.map((item, index) => (
+            <li key={index}>
+              <button className="check" onClick={() => handleComplete(index)}></button> {item} 
             </li>
           ))}
         </ul>
