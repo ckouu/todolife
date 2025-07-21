@@ -1,22 +1,37 @@
 'use client';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import './globals.css';
+import './guy.css';
 import Link from 'next/link';
-import React from "react";
-import lilGuy from "../../public/guy.png";
-import lilGuyHappyKeyframe from "../../public/guy_happy_keyframe1.png";
-import lilGuySmile from "../../public/guy_happy.png";
 
 export default function Page() {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
-  const [guy, setGuy] = useState(lilGuy.src);
+  const [animation, setAnimation] = useState("idle");
+
+  useEffect(() => {
+    let timeoutID: NodeJS.Timeout;
+    if (animation === 'idle') {
+      const rand = Math.random() * 8000 + 2000;
+      setTimeout(() => setAnimation('blink'), rand);
+      setTimeout(() => setAnimation('idle'), rand + 300);
+    }
+  }, [animation]);
+
+  function Guy({animation='idle'}) {
+    if (animation==='idle') {
+      
+    }
+    return(<div className={`guy ${animation}`}/>);
+  }
 
   const handleSave = () => {
-    setGuy(lilGuySmile.src);
-    setTimeout(() => setGuy(lilGuy.src), 1000);
     setList([...list, input]);
     setInput("");
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1400);
   };
 
   const handleComplete = (completedItem: string) => {
@@ -26,9 +41,10 @@ export default function Page() {
         newList.push(item);
       }
     }
-    setGuy(lilGuySmile.src);
-    setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1400);
   };
 
   return (
@@ -58,7 +74,7 @@ export default function Page() {
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
-        <img src={guy} width={400} height={400} alt="Image"></img>
+        <Guy animation={animation}></Guy>
       </div>
     </div>
   );

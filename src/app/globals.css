@@ -42,8 +42,9 @@ input {
 }
 
 .guy {
-  bottom: 150px;
-  right: 200px;
+  transform: scale(0.7);
+  bottom: -150px;
+  right: -250px;
 }
 
 .check {
