@@ -56,8 +56,6 @@ export default function Page() {
   const handleComplete = (index: number) => {
     const newList = [...list];  
     newList.splice(index, 1);
-    setGuy(lilGuySmile.src);
-    setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
