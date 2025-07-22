@@ -9,13 +9,13 @@
 .guy.smileUp {
     background-image: none;
     background-image: url('/sprite_sheet.png');
-    animation: smileUp 0.3s steps(3) forwards;
+    animation: smileUp 0.25s steps(3) forwards;
 }
 
 .guy.smileDown {
     background-image: none;
     background-image: url('/sprite_sheet.png');
-    animation: smileDown 0.3s steps(3) forwards;
+    animation: smileDown 0.25s steps(3) forwards;
 }
 .guy.idle {
     background-image: url('/guy_idle_1.png');

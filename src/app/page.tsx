@@ -13,16 +13,16 @@ export default function Page() {
   useEffect(() => {
     let timeoutID: NodeJS.Timeout;
     if (animation === 'idle') {
-      const rand = Math.random() * 8000 + 2000;
-      setTimeout(() => setAnimation('blink'), rand);
-      setTimeout(() => setAnimation('idle'), rand + 300);
+      const rand = Math.random() * 6000 + 2000;
+      timeoutID = setTimeout(() => {
+        setAnimation('blink');
+        setTimeout(() => setAnimation('idle'), 200);
+      }, rand);
     }
+    return () => clearTimeout(timeoutID);
   }, [animation]);
 
   function Guy({animation='idle'}) {
-    if (animation==='idle') {
-      
-    }
     return(<div className={`guy ${animation}`}/>);
   }
 
@@ -31,7 +31,7 @@ export default function Page() {
     setInput("");
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
-    setTimeout(() => setAnimation('idle'), 1400);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   const handleComplete = (completedItem: string) => {
@@ -44,7 +44,7 @@ export default function Page() {
     setList(newList);
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
-    setTimeout(() => setAnimation('idle'), 1400);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   return (
