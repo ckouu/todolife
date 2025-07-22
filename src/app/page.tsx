@@ -5,7 +5,26 @@ import './globals.css';
 import './guy.css';
 import Link from 'next/link';
 
+async function getTest() {
+  const response = await fetch("/api/test", {
+    cache: "no-cache",
+  })
+  const data = await response.json();
+  console.log(data);
+}
+
+async function postTest() {
+  const res = await fetch('/api/test', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ test: 'one entry' }),
+  });
+  const data = await res.json();
+  console.log(data);
+}
+
 export default function Page() {
+  
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [animation, setAnimation] = useState("idle");
@@ -34,13 +53,11 @@ export default function Page() {
     setTimeout(() => setAnimation('idle'), 1300);
   };
 
-  const handleComplete = (completedItem: string) => {
-    const newList: string[] = [];
-    for (const item of list) {
-      if (item !== completedItem) {
-        newList.push(item);
-      }
-    }
+  const handleComplete = (index: number) => {
+    const newList = [...list];  
+    newList.splice(index, 1);
+    setGuy(lilGuySmile.src);
+    setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
@@ -49,15 +66,15 @@ export default function Page() {
 
   return (
     <div className="todo">
-      <header>TODOLIFE!!!! (best team best project)</header>
+      <header>TODOLIFE!!!! (best team best project!!!)</header>
 
       <p>TODO:</p>
       <div className="list">
       
         <ul>
-          {list.map((item) => (
-            <li key={item}>
-              <button className="check" onClick={() => handleComplete(item)}></button> {item} 
+          {list.map((item, index) => (
+            <li key={index}>
+              <button className="check" onClick={() => handleComplete(index)}></button> {item} 
             </li>
           ))}
         </ul>
@@ -76,6 +93,8 @@ export default function Page() {
       <div className="guy">
         <Guy animation={animation}></Guy>
       </div>
+      <button id="testGet" type="button" onClick={getTest}>test API get</button>
+      <button id="testPost" type="button" onClick={postTest}>test API post</button>
     </div>
   );
 
