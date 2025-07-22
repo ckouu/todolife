@@ -1,0 +1,46 @@
+.guy {
+    width: 1746px;
+    height: 1400px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-position: 0 0;
+}
+
+.guy.smileUp {
+    background-image: none;
+    background-image: url('/sprite_sheet.png');
+    animation: smileUp 0.25s steps(3) forwards;
+}
+
+.guy.smileDown {
+    background-image: none;
+    background-image: url('/sprite_sheet.png');
+    animation: smileDown 0.25s steps(3) forwards;
+}
+.guy.idle {
+    background-image: url('/guy_idle_1.png');
+    background-position: 0 0;
+    animation: none;
+}
+.guy.blink {
+    background-image: url('/guy_idle_2.png');
+    background-position: 0 0;
+    animation: none
+}
+@keyframes smileUp {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -5238px 0;
+    }
+}
+
+@keyframes smileDown {
+    from {
+        background-position: -5238px 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}

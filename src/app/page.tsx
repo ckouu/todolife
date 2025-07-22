@@ -1,11 +1,9 @@
 'use client';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import './globals.css';
+import './guy.css';
 import Link from 'next/link';
-import React from "react";
-import lilGuy from "../../public/guy.png";
-import lilGuyHappyKeyframe from "../../public/guy_happy_keyframe1.png";
-import lilGuySmile from "../../public/guy_happy.png";
 
 async function getTest() {
   const response = await fetch("/api/test", {
@@ -29,13 +27,30 @@ export default function Page() {
   
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
-  const [guy, setGuy] = useState(lilGuy.src);
+  const [animation, setAnimation] = useState("idle");
 
-  const handleSave = (): void => {
-    setGuy(lilGuySmile.src);
-    setTimeout(() => setGuy(lilGuy.src), 1000);
+  useEffect(() => {
+    let timeoutID: NodeJS.Timeout;
+    if (animation === 'idle') {
+      const rand = Math.random() * 6000 + 2000;
+      timeoutID = setTimeout(() => {
+        setAnimation('blink');
+        setTimeout(() => setAnimation('idle'), 200);
+      }, rand);
+    }
+    return () => clearTimeout(timeoutID);
+  }, [animation]);
+
+  function Guy({animation='idle'}) {
+    return(<div className={`guy ${animation}`}/>);
+  }
+
+  const handleSave = () => {
     setList([...list, input]);
     setInput("");
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   const handleComplete = (index: number) => {
@@ -44,6 +59,9 @@ export default function Page() {
     setGuy(lilGuySmile.src);
     setTimeout(() => setGuy(lilGuy.src), 1000);
     setList(newList);
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   return (
@@ -73,7 +91,7 @@ export default function Page() {
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
       <div className="guy">
-        <img src={guy} width={400} height={400} alt="Image"></img>
+        <Guy animation={animation}></Guy>
       </div>
       <button id="testGet" type="button" onClick={getTest}>test API get</button>
       <button id="testPost" type="button" onClick={postTest}>test API post</button>
