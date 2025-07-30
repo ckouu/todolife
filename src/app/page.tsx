@@ -5,23 +5,24 @@ import './globals.css';
 import './guy.css';
 import Link from 'next/link';
 
-async function getTest() {
+async function getUpdates(): Promise<string[]> {
   const response = await fetch("/api/test", {
     cache: "no-cache",
   })
   const data = await response.json();
-  console.log(data);
+  return data.list;
 }
 
-async function postTest() {
+async function post(list: string[]) {
   const res = await fetch('/api/test', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ test: 'one entry' }),
+    body: JSON.stringify({ newList: list }),
   });
   const data = await res.json();
   console.log(data);
 }
+
 
 export default function Page() {
   
@@ -30,6 +31,7 @@ export default function Page() {
   const [animation, setAnimation] = useState("idle");
 
   useEffect(() => {
+    getUpdates().then(setList);
     let timeoutID: NodeJS.Timeout;
     if (animation === 'idle') {
       const rand = Math.random() * 6000 + 2000;
@@ -45,8 +47,9 @@ export default function Page() {
     return(<div className={`guy ${animation}`}/>);
   }
 
-  const handleSave = () => {
+  async function handleSave() {
     setList([...list, input]);
+    post([...list, input]);
     setInput("");
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
@@ -57,6 +60,7 @@ export default function Page() {
     const newList = [...list];  
     newList.splice(index, 1);
     setList(newList);
+    post(newList);
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
     setTimeout(() => setAnimation('idle'), 1300);
@@ -91,8 +95,6 @@ export default function Page() {
       <div className="guy">
         <Guy animation={animation}></Guy>
       </div>
-      <button id="testGet" type="button" onClick={getTest}>test API get</button>
-      <button id="testPost" type="button" onClick={postTest}>test API post</button>
     </div>
   );
 
