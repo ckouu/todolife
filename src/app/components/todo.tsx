@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import '../guy.css';
 import Link from 'next/link';
 
 async function getUpdates(goal: string): Promise<string[]> {
@@ -23,15 +22,18 @@ async function post(list: string[], goal: string) {
 }
 
 interface TodoProps {
-    animation: string;
-    onSetAnimation: (animation: string) => void;
     goal: string;
 }
 
-export default function Todo({ animation, onSetAnimation, goal }: TodoProps) {
+export default function Todo({ goal }: TodoProps) {
   
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
+  const [animation, setAnimation] = useState("idle");
+
+  function Guy({animation='idle'}) {
+    return(<div className={`guy ${animation}`}/>);
+  }
 
   useEffect(() => {
     getUpdates(goal).then(setList);
@@ -39,8 +41,8 @@ export default function Todo({ animation, onSetAnimation, goal }: TodoProps) {
     if (animation === 'idle') {
       const rand = Math.random() * 6000 + 2000;
       timeoutID = setTimeout(() => {
-        onSetAnimation('blink');
-        setTimeout(() => onSetAnimation('idle'), 200);
+        setAnimation('blink');
+        setTimeout(() => setAnimation('idle'), 200);
       }, rand);
     }
     return () => clearTimeout(timeoutID);
@@ -50,9 +52,9 @@ export default function Todo({ animation, onSetAnimation, goal }: TodoProps) {
     setList([...list, input]);
     post([...list, input], goal);
     setInput("");
-    onSetAnimation('smileUp');
-    setTimeout(() => onSetAnimation('smileDown'), 1000);
-    setTimeout(() => onSetAnimation('idle'), 1300);
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   const handleComplete = (index: number) => {
@@ -60,9 +62,9 @@ export default function Todo({ animation, onSetAnimation, goal }: TodoProps) {
     newList.splice(index, 1);
     setList(newList);
     post(newList, goal);
-    onSetAnimation('smileUp');
-    setTimeout(() => onSetAnimation('smileDown'), 1000);
-    setTimeout(() => onSetAnimation('idle'), 1300);
+    setAnimation('smileUp');
+    setTimeout(() => setAnimation('smileDown'), 1000);
+    setTimeout(() => setAnimation('idle'), 1300);
   };
 
   return (
@@ -92,6 +94,10 @@ export default function Todo({ animation, onSetAnimation, goal }: TodoProps) {
         />
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
+
+      <div className="guy">
+            <Guy animation={animation}></Guy>
+        </div>
     </div>
   );
 
