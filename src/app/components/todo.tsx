@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -23,48 +23,31 @@ async function post(list: string[], goal: string) {
 
 interface TodoProps {
     goal: string;
+    onDohAction: () => void;
 }
 
-export default function Todo({ goal }: TodoProps) {
+export default function Todo({ goal, onDohAction }: TodoProps) {
   
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState("");
-  const [animation, setAnimation] = useState("idle");
-
-  function Guy({animation='idle'}) {
-    return(<div className={`guy ${animation}`}/>);
-  }
 
   useEffect(() => {
     getUpdates(goal).then(setList);
-    let timeoutID: NodeJS.Timeout;
-    if (animation === 'idle') {
-      const rand = Math.random() * 6000 + 2000;
-      timeoutID = setTimeout(() => {
-        setAnimation('blink');
-        setTimeout(() => setAnimation('idle'), 200);
-      }, rand);
-    }
-    return () => clearTimeout(timeoutID);
-  }, [animation]);
+  }, [goal]);
 
-  async function handleSave() {
+  function handleSave() {
     setList([...list, input]);
     post([...list, input], goal);
     setInput("");
-    setAnimation('smileUp');
-    setTimeout(() => setAnimation('smileDown'), 1000);
-    setTimeout(() => setAnimation('idle'), 1300);
+    onDohAction;
   };
 
-  const handleComplete = (index: number) => {
+  function handleComplete(index: number) {
     const newList = [...list];  
     newList.splice(index, 1);
     setList(newList);
     post(newList, goal);
-    setAnimation('smileUp');
-    setTimeout(() => setAnimation('smileDown'), 1000);
-    setTimeout(() => setAnimation('idle'), 1300);
+    onDohAction;
   };
 
   return (
@@ -94,10 +77,6 @@ export default function Todo({ goal }: TodoProps) {
         />
         <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
       </div>
-
-      <div className="guy">
-            <Guy animation={animation}></Guy>
-        </div>
     </div>
   );
 

@@ -1,4 +1,4 @@
-.guy {
+.doh {
     width: 0px;
     height: 0px;
     background-repeat: no-repeat;
@@ -6,24 +6,24 @@
     background-position: 0 0;
 }
 
-.guy.smileUp {
+.doh.smileUp {
     background-image: none;
     background-image: url('/sprite_sheet.png');
     animation: smileUp 0.25s steps(3) forwards;
 }
 
-.guy.smileDown {
+.doh.smileDown {
     background-image: none;
     background-image: url('/sprite_sheet.png');
     animation: smileDown 0.25s steps(3) forwards;
 }
-.guy.idle {
-    background-image: url('/guy_idle_1.png');
+.doh.idle {
+    background-image: url('/doh_idle_1.png');
     background-position: 0 0;
     animation: none;
 }
-.guy.blink {
-    background-image: url('/guy_idle_2.png');
+.doh.blink {
+    background-image: url('/doh_idle_2.png');
     background-position: 0 0;
     animation: none
 }
