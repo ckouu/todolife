@@ -30,8 +30,8 @@ export default function Page() {
     <div>
         <Todo goal="fitness" onDohAction={dohAction} />
 
-        <div className="guy">
-          <div className={`guy ${animation}`} />
+        <div className="doh">
+          <div className={`doh ${animation}`} />
         </div>
     </div>
   );

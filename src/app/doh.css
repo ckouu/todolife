@@ -1,12 +1,12 @@
 .doh {
-    width: 50vw;
+    width: 100vw;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     background-position: 0 0;
     z-index: 10000;
-    bottom: 0px;
-    right: 0px;
+    bottom: -200px;
+    right: -100px;
     overflow: visible;
 }
 
