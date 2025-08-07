@@ -1,22 +1,31 @@
 .doh {
-    width: 0px;
-    height: 0px;
+    width: 50vw;
+    aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     background-position: 0 0;
+    z-index: 10000;
+    bottom: 0px;
+    right: 0px;
+    overflow: visible;
 }
 
 .doh.smileUp {
     background-image: none;
+    background-size: 400% auto;
+    background-position: 0 0;
     background-image: url('/sprite_sheet.png');
-    animation: smileUp 0.25s steps(3) forwards;
+    animation: smileUp 0.25s steps(3) forwards; 
 }
 
 .doh.smileDown {
     background-image: none;
+    background-size: 400% auto;
+    background-position: 100% 0;
     background-image: url('/sprite_sheet.png');
     animation: smileDown 0.25s steps(3) forwards;
-}
+ }
+
 .doh.idle {
     background-image: url('/doh_idle_1.png');
     background-position: 0 0;
@@ -32,13 +41,13 @@
         background-position: 0 0;
     }
     to {
-        background-position: -5238px 0;
+        background-position: 100% 0;
     }
 }
 
 @keyframes smileDown {
     from {
-        background-position: -5238px 0;
+        background-position: 100% 0;
     }
     to {
         background-position: 0 0;
