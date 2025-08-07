@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-async function getUpdates(goal: string): Promise<string[]> {
+const getUpdates = async (goal: string): Promise<string[]> => {
   const res = await fetch("/api", {
     cache: "no-cache",
   })
@@ -11,7 +11,7 @@ async function getUpdates(goal: string): Promise<string[]> {
   return data.todos[goal];
 }
 
-async function post(list: string[], goal: string) {
+const post = async (list: string[], goal: string) => {
   const res = await fetch('/api', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -35,19 +35,19 @@ export default function Todo({ goal, onDohAction }: TodoProps) {
     getUpdates(goal).then(setList);
   }, [goal]);
 
-  function handleSave() {
+  const handleSave = () => {
     setList([...list, input]);
     post([...list, input], goal);
     setInput("");
-    onDohAction;
+    onDohAction();
   };
 
-  function handleComplete(index: number) {
+  const handleComplete = (index: number) => {
     const newList = [...list];  
     newList.splice(index, 1);
     setList(newList);
     post(newList, goal);
-    onDohAction;
+    onDohAction();
   };
 
   return (

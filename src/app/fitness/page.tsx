@@ -19,18 +19,17 @@ export default function Page() {
     return () => clearTimeout(timeoutID);
   }, [animation]);
 
-  function dohAction() {
+  const dohAction = () => {
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
     setTimeout(() => setAnimation('idle'), 1300);
-    console.log('test');
   }
 
   return (
-    <div>
+    <div className='page'>
         <Todo goal="fitness" onDohAction={dohAction} />
 
-        <div className="doh">
+        <div className="doh-container">
           <div className={`doh ${animation}`} />
         </div>
     </div>

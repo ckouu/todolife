@@ -26,10 +26,10 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <div className='page'>
         <Todo goal="academics" onDohAction={dohAction} />
 
-        <div className="doh">
+        <div className="doh-container">
           <div className={`doh ${animation}`} />
         </div>
     </div>

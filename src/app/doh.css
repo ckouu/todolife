@@ -1,17 +1,21 @@
+.doh-container {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .doh {
-    width: 100vw;
+    width: 50%;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
+    background-size: contain;
     image-rendering: pixelated;
-    background-position: 0 0;
     z-index: 10000;
-    bottom: -200px;
-    right: -100px;
     overflow: visible;
 }
 
 .doh.smileUp {
-    background-image: none;
     background-size: 400% auto;
     background-position: 0 0;
     background-image: url('/sprite_sheet.png');
@@ -19,7 +23,6 @@
 }
 
 .doh.smileDown {
-    background-image: none;
     background-size: 400% auto;
     background-position: 100% 0;
     background-image: url('/sprite_sheet.png');
@@ -27,7 +30,7 @@
  }
 
 .doh.idle {
-    background-image: url('/doh_idle_1.png');
+    background-image: url('/doh_idle_1.png') !important;
     background-position: 0 0;
     animation: none;
 }
