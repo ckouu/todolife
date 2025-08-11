@@ -3,10 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('/room.svg');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .doh {
     width: 50%;
+    height: 50%;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
     background-size: contain;
