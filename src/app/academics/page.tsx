@@ -28,11 +28,12 @@ export default function Page() {
   return (
     <div className='page'>
         <Todo goal="academics" onDohAction={dohAction} />
-
         <div className="doh-container">
+          <div className="progress">
+            <header>Complete 1 Academic Goal!</header>
+          </div>
           <div className={`doh ${animation}`} />
         </div>
     </div>
   );
-
 }

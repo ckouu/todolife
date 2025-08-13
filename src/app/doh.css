@@ -3,16 +3,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
-
+.progress-container {
+    background-color: white;
+    border: 2px solid black;
+    width: 80%;
+    height: 5%;
+    position: absolute;
+    top: 5vw;
+}
+.progress-fill {
+    height: 100%;
+    background: blue;
+    transition: width 0.3s ease;
+}
+.progress-container header {
+    position: absolute;
+    bottom: 120%;
+    left: 0;
+}
 .doh {
     width: 50%;
+    position: absolute;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
     background-size: contain;
     image-rendering: pixelated;
     z-index: 10000;
     overflow: visible;
+    bottom: 3vw;
 }
 
 .doh.smileUp {
