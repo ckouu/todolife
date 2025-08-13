@@ -38,10 +38,9 @@ export default function Todo({ goal, onDohAction}: TodoProps) {
   const handleSave = () => {
     setList([...list, input]);
     post([...list, input], goal);
-    setInput("");
+    setInput('');
     onDohAction('save');
     setInput('');
-    onDohAction();
   };
 
   const handleComplete = (index: number) => {
