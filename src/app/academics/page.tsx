@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function Page() {
 
-  const [animation, setAnimation] = useState("idle");
+  const [animation, setAnimation] = useState('idle');
 
   useEffect(() => {
     let timeoutID: NodeJS.Timeout;
@@ -32,6 +32,10 @@ export default function Page() {
           <div className="progress">
             <header>Complete 1 Academic Goal!</header>
           </div>
+    <div className='page' style={{backgroundImage: `url(/academics.svg)`}}>
+        <Todo goal='academics' onDohAction={dohAction} />
+
+        <div className='doh-container'>
           <div className={`doh ${animation}`} />
         </div>
     </div>

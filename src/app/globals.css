@@ -1,5 +1,8 @@
 html {
-  font-family: Sans-serif;
+  font-family: 'Kulim Park', Sans-serif;
+  font-size: 1.2vw;
+  color: #64A9D7;
+  background-color: #AAD9F6;
 }
 
 ul {
@@ -7,31 +10,64 @@ ul {
 }
 
 input {
-  width: 90%;
+  width: 70%;
   padding: 1vw;
   margin-right: 1vw;
   border-radius: 1vw;
+  border: 0;
+  font: inherit;
+}
+
+header {
+  font-size: 2vw;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 0.5vw #64A9D7;
+  paint-order: stroke fill;
+}
+
+.head-container {
+  display: flex;
+}
+
+.arrow {
+  background-image: url('/arrow.svg');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  float: right;
+  width: 2vw;
+  height: 100%;
+  margin-left: auto;
 }
 
 .page {
   display: flex;
   height: 100vh;
+  background-color: #FFF0D4;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .todo {
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
-  margin: 2vw;
-  padding: 2vw;
+  background-image: url('/todo.svg');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 1vw;
+  padding: 5vw;
+  padding-top: 3vw;
   width: 35%;
-  border-radius: 2vw;
 }
 
 .list {
   overflow-y: scroll;
   height: 100%;
   background-color: white;
+  margin-top: 1vw;
 }
 
 .add {
@@ -39,8 +75,16 @@ input {
   margin-top: 2vw;
 }
 
+.save-button {
+  width: 20%;
+  border-radius: 1vw;
+  border: 0.2vw solid #B0B0B0;
+  font: inherit;
+}
+
 .check {
-  border-radius: 50%;
+  border-radius: 1vw;
+  border: 0.15vw solid #B0B0B0;
   height: 1vw;
   width: 1vw;
   margin-right: 1vw;

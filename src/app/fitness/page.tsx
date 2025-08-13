@@ -9,6 +9,7 @@ export default function Page() {
   const [todosCompleted, setTodosCompleted] = useState(0);
   var goal = 10;
   var fitnessProgress = Math.min((todosCompleted / goal * 100), 100);
+  const [animation, setAnimation] = useState('idle');
 
   useEffect(() => {
     let timeoutID: NodeJS.Timeout;
@@ -38,6 +39,9 @@ export default function Page() {
             <header>Complete {goal} Fitness Goals!</header>
             <div className="progress-fill" style={{width: `${fitnessProgress}%`}}></div>
           </div>
+    <div className='page' style={{backgroundImage: `url(/fitness.svg)`}}>
+        <Todo goal='fitness' onDohAction={dohAction} />
+        <div className='doh-container'>
           <div className={`doh ${animation}`} />
         </div>
     </div>

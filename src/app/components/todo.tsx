@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 const getUpdates = async (goal: string): Promise<string[]> => {
-  const res = await fetch("/api", {
-    cache: "no-cache",
+  const res = await fetch('/api', {
+    cache: 'no-cache',
   })
   const data = await res.json();
   return data.todos[goal];
@@ -29,7 +29,7 @@ interface TodoProps {
 export default function Todo({ goal, onDohAction}: TodoProps) {
   
   const [list, setList] = useState<string[]>([]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     getUpdates(goal).then(setList);
@@ -40,6 +40,8 @@ export default function Todo({ goal, onDohAction}: TodoProps) {
     post([...list, input], goal);
     setInput("");
     onDohAction('save');
+    setInput('');
+    onDohAction();
   };
 
   const handleComplete = (index: number) => {
@@ -52,29 +54,30 @@ export default function Todo({ goal, onDohAction}: TodoProps) {
 
   return (
     <div className='todo'>
-      <header>TODOLIFE!!!! (best team best project!!!)</header>
-      <Link href="/">back</Link>
+      <div className='head-container'>
+        <header>TODO:</header>
+        <Link href='/' className='arrow'></Link>
+      </div>
 
-      <p>TODO:</p>
-      <div className="list">
+      <div className='list'>
       
         <ul>
           {list.map((item, index) => (
             <li key={index}>
-              <button className="check" onClick={() => handleComplete(index)}></button> {item} 
+              <button className='check' onClick={() => handleComplete(index)}></button> {item} 
             </li>
           ))}
         </ul>
       </div>
-      <div className="add">
+      <div className='add'>
         <input 
-          type="text" 
+          type='text' 
           value={input} 
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => { if (e.key === "Enter" && input != "") handleSave(); }}
-          placeholder="Add your todo list item here!" 
+          onKeyDown={(e) => { if (e.key === 'Enter' && input != '') handleSave(); }}
+          placeholder='Add your todo list item here!' 
         />
-        <button id="saveButton" type="button" onClick={handleSave} disabled={input === ""}>Save</button>
+        <button id='saveButton' className='save-button' type='button' onClick={handleSave} disabled={input === ''}>save</button>
       </div>
     </div>
   );
