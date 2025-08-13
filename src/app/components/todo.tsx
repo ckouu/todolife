@@ -23,10 +23,10 @@ const post = async (list: string[], goal: string) => {
 
 interface TodoProps {
     goal: string;
-    onDohAction: () => void;
+    onDohAction: (type: 'save' | 'complete') => void;
 }
 
-export default function Todo({ goal, onDohAction }: TodoProps) {
+export default function Todo({ goal, onDohAction}: TodoProps) {
   
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState('');
@@ -38,6 +38,8 @@ export default function Todo({ goal, onDohAction }: TodoProps) {
   const handleSave = () => {
     setList([...list, input]);
     post([...list, input], goal);
+    setInput("");
+    onDohAction('save');
     setInput('');
     onDohAction();
   };
@@ -47,7 +49,7 @@ export default function Todo({ goal, onDohAction }: TodoProps) {
     newList.splice(index, 1);
     setList(newList);
     post(newList, goal);
-    onDohAction();
+    onDohAction('complete');
   };
 
   return (
@@ -67,7 +69,6 @@ export default function Todo({ goal, onDohAction }: TodoProps) {
           ))}
         </ul>
       </div>
-
       <div className='add'>
         <input 
           type='text' 
@@ -80,5 +81,4 @@ export default function Todo({ goal, onDohAction }: TodoProps) {
       </div>
     </div>
   );
-
 }
