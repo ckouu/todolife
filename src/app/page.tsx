@@ -15,6 +15,7 @@ export default function Home() {
           <Image fill src='/line.svg' alt='Line' style={{ objectFit: 'contain' }}/>
         </div>
       </div>
+
       <Link href='/fitness'>fitness</Link>
       <Link href='/academics'>academics</Link>
     </div>
