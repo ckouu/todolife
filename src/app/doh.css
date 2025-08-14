@@ -1,35 +1,36 @@
+.progress-container {
+    background-color: white;
+    border: 3px solid #64A9D7;
+    border-radius: 2vw;
+    width: 3%;
+    height: 80%;
+    align-self: center;
+    margin-right: 2vw;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 2vw;
+    background-color: #AAD9F6;
+    transition: height 0.3s ease;
+}
+
 .doh-container {
-    width: 65%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-}
-.progress-container {
-    background-color: white;
-    border: 2px solid black;
-    width: 80%;
-    height: 5%;
-    position: absolute;
-    top: 5vw;
-}
-.progress-fill {
-    height: 100%;
-    background: blue;
-    transition: width 0.3s ease;
-}
-.progress-container header {
-    position: absolute;
-    bottom: 120%;
-    left: 0;
+    margin: 2vw;
     background-image: url('/room.svg');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
 }
+
 .doh {
     width: 50%;
-    position: absolute;
     height: 50%;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
@@ -37,7 +38,6 @@
     image-rendering: pixelated;
     z-index: 10000;
     overflow: visible;
-    bottom: 3vw;
 }
 
 .doh.smileUp {

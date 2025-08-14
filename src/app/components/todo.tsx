@@ -3,43 +3,48 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-const getUpdates = async (goal: string): Promise<string[]> => {
+const getUpdates = async (goal: string): Promise<[string[], number]> => {
   const res = await fetch('/api', {
     cache: 'no-cache',
   })
   const data = await res.json();
-  return data.todos[goal];
+  return [data.todos[goal], data.completed[goal]];
 }
 
-const post = async (list: string[], goal: string) => {
+const post = async (list: string[], goal: string, completed: number) => {
   const res = await fetch('/api', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ newList: list, goal: goal }),
+    body: JSON.stringify({ newList: list, goal: goal, completed: completed }),
   });
   const data = await res.json();
-  console.log(data);
 }
 
 interface TodoProps {
     goal: string;
-    onDohAction: (type: 'save' | 'complete') => void;
+    onDohAction: () => void;
+    onSetCompleted: (completed: number) => void;
 }
 
-export default function Todo({ goal, onDohAction}: TodoProps) {
+export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
   
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState('');
+  const [todosCompleted, setTodosCompleted] = useState(0);
 
   useEffect(() => {
-    getUpdates(goal).then(setList);
-  }, [goal]);
+    getUpdates(goal).then(([todos, completed]) => {
+      setList(todos);
+      setTodosCompleted(completed);
+      onSetCompleted(completed);
+    });
+  }, [goal, onSetCompleted]);
 
   const handleSave = () => {
     setList([...list, input]);
-    post([...list, input], goal);
+    post([...list, input], goal, 0);
     setInput('');
-    onDohAction('save');
+    onDohAction();
     setInput('');
   };
 
@@ -47,8 +52,10 @@ export default function Todo({ goal, onDohAction}: TodoProps) {
     const newList = [...list];  
     newList.splice(index, 1);
     setList(newList);
-    post(newList, goal);
-    onDohAction('complete');
+    setTodosCompleted(todosCompleted + 1);
+    post(newList, goal, 1);
+    onDohAction();
+    onSetCompleted(todosCompleted + 1);
   };
 
   return (

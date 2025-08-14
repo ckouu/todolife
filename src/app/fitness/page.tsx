@@ -5,10 +5,9 @@ import { useState, useEffect } from 'react';
 
 export default function Page() {
 
-  const [todosCompleted, setTodosCompleted] = useState(0);
-  var goal = 10;
-  var fitnessProgress = Math.min((todosCompleted / goal * 100), 100);
   const [animation, setAnimation] = useState('idle');
+  const [completed, setCompleted] = useState(0);
+  let progress = Math.min((completed / 10 * 100), 100);
 
   useEffect(() => {
     let timeoutID: NodeJS.Timeout;
@@ -22,24 +21,23 @@ export default function Page() {
     return () => clearTimeout(timeoutID);
   }, [animation]);
   
-  const dohAction = (type: 'save' | 'complete') => {
-    if (type === 'complete') {
-      setTodosCompleted(prev => prev + 1);
-    }
+  const dohAction = () => {
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
     setTimeout(() => setAnimation('idle'), 1300);
   }
+
   return (
           
     <div className='page' style={{backgroundImage: `url(/fitness.svg)`}}>
-        <Todo goal='fitness' onDohAction={dohAction} />
+        <Todo goal='fitness' onDohAction={dohAction} onSetCompleted={setCompleted}/>
+        
         <div className='doh-container'>
-          <div className="progress-container">
-            <header>Complete {goal} Fitness Goals!</header>
-            <div className="progress-fill" style={{width: `${fitnessProgress}%`}}></div>
-          </div>
           <div className={`doh ${animation}`} />
+        </div>
+
+        <div className="progress-container">
+          <div className="progress-fill" style={{height: `${progress}%`}}></div>
         </div>
     </div>
   );

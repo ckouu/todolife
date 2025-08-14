@@ -1,10 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Home() {
 
-  const [current, setCurrent] = useState('fitness');
+  const [index, setIndex] = useState(0);
   const chapters =['fitness', 'academics', 'nutrition'];
 
   return (

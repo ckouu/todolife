@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 export default function Page() {
 
   const [animation, setAnimation] = useState('idle');
+  const [completed, setCompleted] = useState(0);
+  let progress = Math.min((completed / 10 * 100), 100);
 
   useEffect(() => {
     let timeoutID: NodeJS.Timeout;
@@ -19,7 +21,7 @@ export default function Page() {
     return () => clearTimeout(timeoutID);
   }, [animation]);
 
-  function dohAction() {
+  const dohAction = () => {
     setAnimation('smileUp');
     setTimeout(() => setAnimation('smileDown'), 1000);
     setTimeout(() => setAnimation('idle'), 1300);
@@ -28,13 +30,14 @@ export default function Page() {
   return (
           
     <div className='page' style={{backgroundImage: `url(/academics.svg)`}}>
-        <Todo goal='academics' onDohAction={dohAction} />
+        <Todo goal='academics' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
         <div className='doh-container'>
-          <div className='progress'>
-            <header>Complete 1 Academic Goal!</header>
-          </div>
           <div className={`doh ${animation}`} />
+        </div>
+
+        <div className="progress-container">
+          <div className="progress-fill" style={{height: `${progress}%`}}></div>
         </div>
     </div>
   );
