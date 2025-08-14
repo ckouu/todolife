@@ -1,8 +1,9 @@
-html {
+html, body {
   font-family: 'Kulim Park', Sans-serif;
   font-size: 1.2vw;
   color: #64A9D7;
   background-color: #AAD9F6;
+  margin: 0;
 }
 
 ul {
