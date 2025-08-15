@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-let todos: { [key: string]: string[] } = { 'fitness': [], 'academics': [] };
-let completed: { [key: string]: number } = { 'fitness': 0, 'academics': 0 };
+let todos: { [key: string]: string[] } = { 'fitness': [], 'academics': [] , 'nutrition': []};
+let completed: { [key: string]: number } = { 'fitness': 0, 'academics': 0, 'nutrition': 0};
 
 export async function GET(req: NextRequest) {
   return NextResponse.json({ todos: todos, completed: completed });

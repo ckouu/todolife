@@ -62,7 +62,7 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
     <div className='todo'>
       <div className='head-container'>
         <header>TODO:</header>
-        <Link href='/' className='arrow'></Link>
+        <Link href='/' className='arrow-left'></Link>
       </div>
 
       <div className='list'>
