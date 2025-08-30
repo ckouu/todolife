@@ -40,44 +40,60 @@
     overflow: visible;
 }
 
-.doh.smileUp {
-    background-size: 400% auto;
+.doh.fitness1.happy {
+    background-size: 1200% auto;
     background-position: 0 0;
-    background-image: url('/sprite_sheet.png');
-    animation: smileUp 0.25s steps(3) forwards; 
-}
-
-.doh.smileDown {
-    background-size: 400% auto;
-    background-position: 100% 0;
-    background-image: url('/sprite_sheet.png');
-    animation: smileDown 0.25s steps(3) forwards;
+    background-image: url('/sprite_sheets/fitness1-happy.png');
+    animation: play 2s steps(11) forwards;
  }
 
-.doh.idle {
-    background-image: url('/doh_idle_1.png') !important;
+.doh.fitness2.happy {
+    background-size: 1000% auto;
     background-position: 0 0;
-    animation: none;
+    background-image: url('/sprite_sheets/fitness2-happy.png');
+    animation: play 2s steps(9) forwards;
+ }
+
+.doh.fitness3.happy {
+    background-size: 1000% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/fitness3-happy.png');
+    animation: play 2s steps(9) forwards;
+ }
+
+.doh.fitness1.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/fitness1-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
 }
+
+.doh.fitness2.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/fitness2-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.fitness3.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/fitness3-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
 .doh.blink {
     background-image: url('/doh_idle_2.png');
     background-position: 0 0;
     animation: none
 }
-@keyframes smileUp {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 100% 0;
-    }
+
+@keyframes play {
+    from { background-position: 0 0; }
+    to   { background-position: 100% 0; }
 }
 
-@keyframes smileDown {
-    from {
-        background-position: 100% 0;
-    }
-    to {
-        background-position: 0 0;
-    }
+@keyframes loop {
+    from { background-position: 0 0; }
+    to   { background-position: 100% 0; }
 }

@@ -8,7 +8,7 @@ const getUpdates = async (goal: string): Promise<[string[], number]> => {
     cache: 'no-cache',
   })
   const data = await res.json();
-  return [data.todos[goal], data.completed[goal]];
+  return [data.todos[goal], data.totalCompleted[goal]];
 }
 
 const post = async (list: string[], goal: string, completed: number) => {
@@ -17,13 +17,12 @@ const post = async (list: string[], goal: string, completed: number) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ newList: list, goal: goal, completed: completed }),
   });
-  const data = await res.json();
 }
 
 interface TodoProps {
     goal: string;
     onDohAction: () => void;
-    onSetCompleted: (completed: number) => void;
+    onSetCompleted: (totalCompleted: number) => void;
 }
 
 export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
@@ -33,10 +32,10 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
   const [todosCompleted, setTodosCompleted] = useState(0);
 
   useEffect(() => {
-    getUpdates(goal).then(([todos, completed]) => {
+    getUpdates(goal).then(([todos, totalCompleted]) => {
       setList(todos);
-      setTodosCompleted(completed);
-      onSetCompleted(completed);
+      setTodosCompleted(totalCompleted);
+      onSetCompleted(totalCompleted);
     });
   }, [goal, onSetCompleted]);
 
@@ -45,17 +44,16 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
     post([...list, input], goal, 0);
     setInput('');
     onDohAction();
-    setInput('');
   };
 
   const handleComplete = (index: number) => {
     const newList = [...list];  
     newList.splice(index, 1);
     setList(newList);
-    setTodosCompleted(todosCompleted + 1);
     post(newList, goal, 1);
-    onDohAction();
+    setTodosCompleted(todosCompleted + 1);
     onSetCompleted(todosCompleted + 1);
+    onDohAction();
   };
 
   return (

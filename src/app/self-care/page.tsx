@@ -29,8 +29,8 @@ export default function Page() {
 
   return (
           
-    <div className='page' style={{backgroundImage: `url(/nutrition.svg)`}}>
-        <Todo goal='nutrition' onDohAction={dohAction} onSetCompleted={setCompleted}/>
+    <div className='page' style={{backgroundImage: `url(/self-care.svg)`}}>
+        <Todo goal='self-care' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
         <div className='doh-container'>
           <div className={`doh ${animation}`} />

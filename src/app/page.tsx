@@ -7,7 +7,7 @@ import { useState } from 'react'
 export default function Home() {
 
   const [index, setIndex] = useState(0);
-  const chapters = ['fitness', 'academics', 'nutrition'];
+  const chapters = ['fitness', 'academics', 'self-care'];
 
   const leftIndex = (index - 1 + chapters.length) % chapters.length;
   const rightIndex = (index + 1) % chapters.length;

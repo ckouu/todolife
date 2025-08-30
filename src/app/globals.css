@@ -1,9 +1,13 @@
 html, body {
   font-family: 'Kulim Park', Sans-serif;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
   color: #64A9D7;
   background-color: #AAD9F6;
   margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 ul {
@@ -95,6 +99,7 @@ header {
   padding-bottom: 0.5vw;
   border-radius: 1vw;
   margin-top: 2vw;
+  cursor: pointer;
 }
 
 .head-container {
@@ -110,6 +115,7 @@ header {
   width: 3vw;
   height: 100%;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .arrow-right {
