@@ -124,6 +124,48 @@
     animation: loop 1s steps(2) infinite;
 }
 
+.doh.self-care1.happy {
+    background-size: 1200% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/self-care/self-care1-happy.png');
+    animation: play 2s steps(11) forwards;
+ }
+
+.doh.self-care2.happy {
+    background-size: 1200% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/self-care/self-care2-happy.png');
+    animation: play 2s steps(11) forwards;
+ }
+
+.doh.self-care3.happy {
+    background-size: 1400% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/self-care/self-care3-happy.png');
+    animation: play 2s steps(13) forwards;
+ }
+
+.doh.self-care1.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/self-care/self-care1-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.self-care2.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/self-care/self-care2-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.self-care3.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/self-care/self-care3-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
 .doh.blink {
     background-image: url('/doh_idle_2.png');
     background-position: 0 0;
