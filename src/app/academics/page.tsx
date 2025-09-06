@@ -7,24 +7,25 @@ export default function Page() {
 
   const [animation, setAnimation] = useState('idle');
   const [completed, setCompleted] = useState(0);
-  let progress = Math.min((completed / 10 * 100), 100);
+  let progress = Math.min((completed / 15 * 100), 100);
+  let level = Math.min(1 + (Math.floor(completed / 5)), 3);
 
-  useEffect(() => {
-    let timeoutID: NodeJS.Timeout;
-    if (animation === 'idle') {
-        const rand = Math.random() * 6000 + 2000;
-        timeoutID = setTimeout(() => {
-        setAnimation('blink');
-        setTimeout(() => setAnimation('idle'), 200);
-        }, rand);
-    }
-    return () => clearTimeout(timeoutID);
-  }, [animation]);
+  // useEffect(() => {
+  //   let timeoutID: NodeJS.Timeout;
+  //   if (animation === 'idle') {
+  //       const rand = Math.random() * 6000 + 2000;
+  //       timeoutID = setTimeout(() => {
+  //       setAnimation('blink');
+  //       setTimeout(() => setAnimation('idle'), 200);
+  //       }, rand);
+  //   }
+  //   return () => clearTimeout(timeoutID);
+  // }, [animation]);
 
   const dohAction = () => {
-    setAnimation('smileUp');
-    setTimeout(() => setAnimation('smileDown'), 1000);
-    setTimeout(() => setAnimation('idle'), 1300);
+    setAnimation('idle');
+    setAnimation('happy');
+    setTimeout(() => setAnimation('idle'), 2000);
   }
 
   return (
@@ -33,7 +34,7 @@ export default function Page() {
         <Todo goal='academics' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
         <div className='doh-container'>
-          <div className={`doh ${animation}`} />
+          <div className={`doh academics${level} ${animation}`} />
         </div>
 
         <div className="progress-container">

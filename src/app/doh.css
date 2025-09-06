@@ -30,8 +30,8 @@
 }
 
 .doh {
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     aspect-ratio: 1746 / 1479;
     background-repeat: no-repeat;
     background-size: contain;
@@ -43,41 +43,83 @@
 .doh.fitness1.happy {
     background-size: 1200% auto;
     background-position: 0 0;
-    background-image: url('/sprite_sheets/fitness1-happy.png');
+    background-image: url('/sprite_sheets/fitness/fitness1-happy.png');
     animation: play 2s steps(11) forwards;
  }
 
 .doh.fitness2.happy {
     background-size: 1000% auto;
     background-position: 0 0;
-    background-image: url('/sprite_sheets/fitness2-happy.png');
+    background-image: url('/sprite_sheets/fitness/fitness2-happy.png');
     animation: play 2s steps(9) forwards;
  }
 
 .doh.fitness3.happy {
     background-size: 1000% auto;
     background-position: 0 0;
-    background-image: url('/sprite_sheets/fitness3-happy.png');
+    background-image: url('/sprite_sheets/fitness/fitness3-happy.png');
     animation: play 2s steps(9) forwards;
  }
 
 .doh.fitness1.idle {
     background-size: 300% auto;
-    background-image: url('/sprite_sheets/fitness1-idle.png');
+    background-image: url('/sprite_sheets/fitness/fitness1-idle.png');
     background-position: 0 0;
     animation: loop 1s steps(2) infinite;
 }
 
 .doh.fitness2.idle {
     background-size: 300% auto;
-    background-image: url('/sprite_sheets/fitness2-idle.png');
+    background-image: url('/sprite_sheets/fitness/fitness2-idle.png');
     background-position: 0 0;
     animation: loop 1s steps(2) infinite;
 }
 
 .doh.fitness3.idle {
     background-size: 300% auto;
-    background-image: url('/sprite_sheets/fitness3-idle.png');
+    background-image: url('/sprite_sheets/fitness/fitness3-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.academics1.happy {
+    background-size: 900% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/academics/academics1-happy.png');
+    animation: play 2s steps(8) forwards;
+ }
+
+.doh.academics2.happy {
+    background-size: 1000% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/academics/academics2-happy.png');
+    animation: play 2s steps(9) forwards;
+ }
+
+.doh.academics3.happy {
+    background-size: 1000% auto;
+    background-position: 0 0;
+    background-image: url('/sprite_sheets/academics/academics3-happy.png');
+    animation: play 2s steps(9) forwards;
+ }
+
+.doh.academics1.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/academics/academics1-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.academics2.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/academics/academics2-idle.png');
+    background-position: 0 0;
+    animation: loop 1s steps(2) infinite;
+}
+
+.doh.academics3.idle {
+    background-size: 300% auto;
+    background-image: url('/sprite_sheets/academics/academics3-idle.png');
     background-position: 0 0;
     animation: loop 1s steps(2) infinite;
 }

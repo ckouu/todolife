@@ -43,7 +43,6 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
     setList([...list, input]);
     post([...list, input], goal, 0);
     setInput('');
-    onDohAction();
   };
 
   const handleComplete = (index: number) => {
