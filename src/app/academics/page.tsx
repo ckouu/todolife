@@ -28,6 +28,9 @@ export default function Page() {
         <div className="progress-container">
           <div className="progress-fill" style={{height: `${progress}%`}}></div>
         </div>
+      <audio autoPlay loop>
+        <source src="/Sneaky Adventure.mp3" type="audio/mpeg"/>
+      </audio>
     </div>
   );
 }
