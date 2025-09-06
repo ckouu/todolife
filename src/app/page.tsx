@@ -20,6 +20,9 @@ export default function Home() {
     setIndex((prev) => (prev - 1 + chapters.length) % chapters.length);
   }
 
+  const FluffingADuck = new Audio("../Fluffing a Duck.mp3");
+    FluffingADuck.play();
+
   return (
     <div className='home-page'>
       <div className='head-container'>

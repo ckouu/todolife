@@ -9,27 +9,15 @@ export default function Page() {
   const [completed, setCompleted] = useState(0);
   let progress = Math.min((completed / 15 * 100), 100);
   let level = Math.min(1 + (Math.floor(completed / 5)), 3);
-
-  // useEffect(() => {
-  //   let timeoutID: NodeJS.Timeout;
-  //   if (animation === 'idle') {
-  //       const rand = Math.random() * 6000 + 2000;
-  //       timeoutID = setTimeout(() => {
-  //       setAnimation('blink');
-  //       setTimeout(() => setAnimation('idle'), 200);
-  //       }, rand);
-  //   }
-  //   return () => clearTimeout(timeoutID);
-  // }, [animation]);
-
+  
   const dohAction = () => {
     setAnimation('idle');
     setAnimation('happy');
     setTimeout(() => setAnimation('idle'), 2000);
   }
-
+  
   return (
-          
+    
     <div className='page' style={{backgroundImage: `url(/academics.svg)`}}>
         <Todo goal='academics' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
