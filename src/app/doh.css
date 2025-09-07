@@ -82,6 +82,20 @@
     animation: loop 1s steps(2) infinite;
 }
 
+.doh.fitness1.blink {
+    background-image: url('/sprite_sheets/fitness/fitness1-blink.png');
+    background-position: 0 0;
+}
+
+.doh.fitness2.blink {
+    background-image: url('/sprite_sheets/fitness/fitness2-blink.png');
+    background-position: 0 0;
+}
+.doh.fitness3.blink {
+    background-image: url('/sprite_sheets/fitness/fitness3-blink.png');
+    background-position: 0 0;
+}
+
 .doh.academics1.happy {
     background-size: 900% auto;
     background-position: 0 0;
@@ -122,6 +136,21 @@
     background-image: url('/sprite_sheets/academics/academics3-idle.png');
     background-position: 0 0;
     animation: loop 1s steps(2) infinite;
+}
+
+.doh.academics1.blink {
+    background-image: url('/sprite_sheets/academics/academics1-blink.png');
+    background-position: 0 0;
+}
+
+.doh.academics2.blink {
+    background-image: url('/sprite_sheets/academics/academics2-blink.png');
+    background-position: 0 0;
+}
+
+.doh.academics3.blink {
+    background-image: url('/sprite_sheets/academics/academics3-blink.png');
+    background-position: 0 0;
 }
 
 .doh.self-care1.happy {
@@ -166,10 +195,19 @@
     animation: loop 1s steps(2) infinite;
 }
 
-.doh.blink {
-    background-image: url('/doh_idle_2.png');
+.doh.self-care1.blink {
+    background-image: url('/sprite_sheets/self-care/self-care1-blink.png');
     background-position: 0 0;
-    animation: none
+}
+
+.doh.self-care2.blink {
+    background-image: url('/sprite_sheets/self-care/self-care2-blink.png');
+    background-position: 0 0;
+}
+
+.doh.self-care3.blink {
+    background-image: url('/sprite_sheets/self-care/self-care3-blink.png');
+    background-position: 0 0;
 }
 
 @keyframes play {
