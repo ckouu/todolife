@@ -11,9 +11,7 @@ export default function Page() {
   let level = Math.min(1 + (Math.floor(completed / 5)), 3);
   
   const dohAction = () => {
-    setAnimation('idle');
     setAnimation('happy');
-    setTimeout(() => setAnimation('idle'), 2000);
   }
   
   return (
@@ -22,7 +20,7 @@ export default function Page() {
         <Todo goal='academics' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
         <div className='doh-container'>
-          <div className={`doh academics${level} ${animation}`} />
+          <div className={`doh academics${level} ${animation}`} onAnimationEnd={() => setAnimation('idle')}/>
         </div>
 
         <div className="progress-container">

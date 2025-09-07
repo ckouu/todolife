@@ -1,12 +1,13 @@
 'use client';
 
 import Todo from '../components/todo';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Page() {
 
-  const [animation, setAnimation] = useState('idle');
+  const [animation, setAnimation] = useState<'idle' | 'happy'>('idle');
   const [completed, setCompleted] = useState(0);
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
   let progress = Math.min((completed / 15 * 100), 100);
   let level = Math.min(1 + (Math.floor(completed / 5)), 3);
 
@@ -23,9 +24,7 @@ export default function Page() {
   // }, [animation]);
   
   const dohAction = () => {
-    setAnimation('idle');
     setAnimation('happy');
-    setTimeout(() => setAnimation('idle'), 2000);
   }
 
   return (
@@ -34,7 +33,7 @@ export default function Page() {
         <Todo goal='fitness' onDohAction={dohAction} onSetCompleted={setCompleted}/>
         
         <div className='doh-container'>
-          <div className={`doh fitness${level} ${animation}`} />
+          <div className={`doh fitness${level} ${animation}`} onAnimationEnd={() => setAnimation('idle')}/>
         </div>
 
         <div className="progress-container">

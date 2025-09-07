@@ -132,10 +132,10 @@
  }
 
 .doh.self-care2.happy {
-    background-size: 1200% auto;
+    background-size: 1100% auto;
     background-position: 0 0;
     background-image: url('/sprite_sheets/self-care/self-care2-happy.png');
-    animation: play 2s steps(11) forwards;
+    animation: play 2s steps(10) forwards;
  }
 
 .doh.self-care3.happy {

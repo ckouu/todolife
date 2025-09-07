@@ -23,9 +23,7 @@ export default function Page() {
   // }, [animation]);
 
   const dohAction = () => {
-    setAnimation('idle');
     setAnimation('happy');
-    setTimeout(() => setAnimation('idle'), 2000);
   }
 
   return (
@@ -34,7 +32,7 @@ export default function Page() {
         <Todo goal='self-care' onDohAction={dohAction} onSetCompleted={setCompleted}/>
 
         <div className='doh-container'>
-          <div className={`doh self-care${level} ${animation}`} />
+          <div className={`doh self-care${level} ${animation}`} onAnimationEnd={() => setAnimation('idle')}/>
         </div>
 
         <div className="progress-container">
