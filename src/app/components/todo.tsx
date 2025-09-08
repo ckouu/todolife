@@ -89,7 +89,7 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
         <button id='saveButton' className='save-button' type='button' onClick={handleSave} disabled={input === ''}>save</button>
       </div>
       <audio autoPlay loop ref={audioRef}>
-        <source src="/Monkeys Spinning Monkeys.mp3" type="audio/mpeg"/>
+        <source src="/charliebrown.mp3" type="audio/mpeg"/>
       </audio>
     </div>
   );
