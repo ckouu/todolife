@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 
-const getUpdates = async (goal: string): Promise<[string[], number]> => {
+const getUpdates = async (goal: string): Promise<[string[], number, boolean]> => {
   const res = await fetch('/api', {
     cache: 'no-cache',
   })
   const data = await res.json();
-  return [data.todos[goal], data.totalCompleted[goal]];
+  return [data.todos[goal], data.totalCompleted[goal], data.muted];
 }
 
 const post = async (list: string[], goal: string, completed: number) => {
@@ -30,12 +30,18 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
   const [list, setList] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const [todosCompleted, setTodosCompleted] = useState(0);
+  const [muted, setMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    getUpdates(goal).then(([todos, totalCompleted]) => {
+    getUpdates(goal).then(([todos, totalCompleted, savedMuted]) => {
       setList(todos);
       setTodosCompleted(totalCompleted);
       onSetCompleted(totalCompleted);
+      setMuted(savedMuted)
+      if (audioRef.current) {
+        audioRef.current.muted = savedMuted;
+      }
     });
   }, [goal, onSetCompleted]);
 
@@ -82,6 +88,9 @@ export default function Todo({ goal, onDohAction, onSetCompleted}: TodoProps) {
         />
         <button id='saveButton' className='save-button' type='button' onClick={handleSave} disabled={input === ''}>save</button>
       </div>
+      <audio autoPlay loop ref={audioRef}>
+        <source src="/charliebrown.mp3" type="audio/mpeg"/>
+      </audio>
     </div>
   );
 }

@@ -44,6 +44,13 @@ header {
   padding-top: 10vw;
 }
 
+.mute-button {
+  position: fixed;
+  top: 0vw;
+  right: 2vw;
+  z-index: 10000;
+}
+
 .line {
   position: relative;
   margin-left: 2vw;
