@@ -12,7 +12,7 @@ We practiced using git to manage our workflows and learned to use TypeScript and
 We hope you enjoy our little passion project!
 ## Instructions
 
-Clone the directory with ```git clone https://github.com/ckouu/todolife.git```. Navigate to the todolife directory with ```cd todolife``` and run: ```npm install```, then ```npm run dev```.
+Clone the directory with ```git clone https://github.com/ckouu/todolife.git```. Navigate to the todolife directory with ```cd todolife``` and run: ```npm install```, then ```npm run dev```. Now, open todolife [here](http://localhost:3000/) at ```http://localhost:3000/```!
 ## Authors
 
 - Candra Kou [@ckouu](https://github.com/ckouu)
