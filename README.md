@@ -5,7 +5,7 @@ Track your todo list to explore Doh's story in a cozy website, featuring music a
 
 We used TypeScript, CSS, and NextJS to build our project. 
 
-We wanted to create a website that blended productivity and game mechanics, and NextJS offered the flexibility we needed to add our planned features, pages, and spritesheet animations. 
+We wanted to create a website that blended productivity and game mechanics. NextJS offered the flexibility we needed to add our planned features, pages, and spritesheet animations. 
 
 We practiced using git to manage our workflows and learned to use TypeScript and CSS to format pages, play animations, and include music. 
 
